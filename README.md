@@ -2,6 +2,8 @@
 
 An optimal-search laboratory for a four-layer tetrahedral twisty puzzle, implemented as a reusable C++20 library, command-line application, deterministic benchmark suite, and WebAssembly visualizer.
 
+[Try the live WebAssembly demo](https://masonwooldridge.github.io/pyraminx_astar/)
+
 The project compares breadth-first search, A*, and memory-bounded IDA* using an admissible misplaced-sticker bound and a reverse-generated pattern database. Every reported solution is replayed against the input state, and informed-solver solution lengths are tested against BFS at tractable depths.
 
 > The original 1,300-line prototype is preserved in [`legacy/`](legacy/) for provenance. The production implementation replaces its mutable triangles and position-history stacks with a 64-byte value type.
