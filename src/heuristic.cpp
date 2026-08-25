@@ -29,7 +29,7 @@ const std::unordered_map<Key, std::uint8_t>& pattern_distances() {
         std::unordered_map<Key, std::uint8_t> result;
         std::queue<Key> frontier;
         const Key goal = encode({0, 21, 42});
-        result.emplace(goal, 0);
+        result.emplace(goal, std::uint8_t{0});
         frontier.push(goal);
 
         while (!frontier.empty()) {

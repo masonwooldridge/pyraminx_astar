@@ -174,7 +174,10 @@ std::string format_moves(std::span<const Move> moves) {
 }
 
 std::vector<Move> make_scramble(std::size_t length, std::mt19937& random) {
-    std::uniform_int_distribution<std::uint8_t> distribution(0, 31);
+    // MSVC deliberately rejects the character-like uint8_t specialization.
+    // Generate a standard unsigned integer and narrow only after constraining
+    // the value to the Move enum's 0..31 range.
+    std::uniform_int_distribution<unsigned int> distribution(0U, 31U);
     std::vector<Move> moves;
     moves.reserve(length);
     while (moves.size() < length) {
