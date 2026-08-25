@@ -161,3 +161,7 @@ ctest --test-dir build-sanitize --output-on-failure
 - Add a bidirectional BFS comparison and resident-set memory instrumentation.
 - Publish the static WebAssembly demo and link it here.
 - Evaluate a learned heuristic separately, clearly reporting prediction error and any loss of optimality.
+
+## License
+
+This project is available under the [MIT License](LICENSE).
