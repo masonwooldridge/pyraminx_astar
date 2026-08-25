@@ -1,0 +1,9 @@
+/build/
+/build-*/
+/cmake-build-*/
+/web/dist/
+.DS_Store
+*.profraw
+*.profdata
+coverage/
+

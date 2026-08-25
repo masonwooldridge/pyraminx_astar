@@ -1,0 +1,15 @@
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*
+WarningsAsErrors: ''
+HeaderFilterRegex: 'include/pyraminx/.*'
+CheckOptions:
+  - key: readability-identifier-length.IgnoredLoopCounterNames
+    value: 'i;j;k'
+

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive C++/WebAssembly search laboratory for a four-layer Pyraminx.">
+  <title>Pyraminx Search Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">C++20 · A* · IDA* · Pattern database</p>
+      <h1>Pyraminx Search Lab</h1>
+      <p class="lede">Scramble a four-layer tetrahedral puzzle, compare optimal solvers, and watch the search unwind in your browser.</p>
+    </header>
+
+    <section class="workspace" aria-label="Solver controls and puzzle">
+      <form id="controls">
+        <label>Scramble
+          <input id="scramble" value="U4 R3' L2 B1" autocomplete="off" spellcheck="false">
+        </label>
+        <div class="row">
+          <label>Algorithm
+            <select id="algorithm">
+              <option value="astar">A*</option>
+              <option value="idastar">IDA*</option>
+              <option value="bfs">Breadth-first</option>
+            </select>
+          </label>
+          <label>Heuristic
+            <select id="heuristic">
+              <option value="pdb">Pattern database</option>
+              <option value="misplaced">Misplaced stickers</option>
+              <option value="zero">None</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button type="button" id="randomize" class="secondary">New scramble</button>
+          <button type="submit" id="solve">Solve</button>
+        </div>
+        <p id="status" role="status">Loading the WebAssembly engine…</p>
+      </form>
+
+      <div class="puzzle" id="puzzle" aria-label="Unfolded four-face puzzle net"></div>
+    </section>
+
+    <section class="metrics" aria-label="Search metrics">
+      <article><span>Solution</span><strong id="solution">—</strong></article>
+      <article><span>Length</span><strong id="length">—</strong></article>
+      <article><span>Nodes expanded</span><strong id="expanded">—</strong></article>
+      <article><span>Runtime</span><strong id="runtime">—</strong></article>
+      <article><span>Peak frontier</span><strong id="frontier">—</strong></article>
+      <article><span>Est. memory</span><strong id="memory">—</strong></article>
+    </section>
+  </main>
+  <script src="dist/pyraminx.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

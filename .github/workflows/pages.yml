@@ -1,0 +1,44 @@
+name: WebAssembly demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: emscripten/emsdk:6.0.8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure WebAssembly build
+        run: >-
+          emcmake cmake -S . -B build-web -DCMAKE_BUILD_TYPE=Release
+          -DPYRAMINX_BUILD_TESTS=OFF -DPYRAMINX_BUILD_BENCHMARKS=OFF
+      - name: Compile solver
+        run: cmake --build build-web --target pyraminx-web --parallel
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
