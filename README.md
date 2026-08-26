@@ -133,7 +133,7 @@ python3 -m http.server 8000 --directory web
 
 Open `http://localhost:8000`. You can enter notation, generate a scramble, choose a solver and heuristic, inspect metrics, and animate the returned solution. The page is responsive and works without a server component; only static hosting is needed.
 
-The included `pages.yml` workflow builds the WebAssembly bundle with the pinned Emscripten SDK and deploys `web/` after a push to `main`. In the repository settings, select **GitHub Actions** as the Pages source once; then add the generated URL near the top of this README.
+The included `pages.yml` workflow builds the WebAssembly bundle with the pinned Emscripten SDK and deploys `web/` to the [live demo](https://masonwooldridge.github.io/pyraminx_astar/) after each push to `main`.
 
 ## Quality gates
 
@@ -159,7 +159,6 @@ ctest --test-dir build-sanitize --output-on-failure
 
 - Validate the facelet permutations against a physical puzzle and add cubie-level serialization.
 - Add a bidirectional BFS comparison and resident-set memory instrumentation.
-- Publish the static WebAssembly demo and link it here.
 - Evaluate a learned heuristic separately, clearly reporting prediction error and any loss of optimality.
 
 ## License
